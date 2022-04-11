@@ -10,4 +10,4 @@ file1 = open("coins.json", "w")
 
 file1.write(json.dumps(data))
 
-print(data)
+print(data.keys())
