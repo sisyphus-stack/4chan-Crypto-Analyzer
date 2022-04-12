@@ -11,6 +11,8 @@ timestamp = int(json.dumps(data['timestamp']))
 
 dt_object = datetime.fromtimestamp(timestamp)
 
+
+
 print("dt_object =", dt_object)
 
 with open("coins.txt", "w") as file1: 

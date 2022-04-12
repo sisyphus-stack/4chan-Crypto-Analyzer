@@ -51,7 +51,7 @@ def main():
     #print('Topic Repr', topic)
     print('Postnumber', topic.post_number)
     print('Timestamp',  topic.timestamp)
-    print('Datetime',   repr(topic.datetime))
+    print('Datetime',   (topic.datetime.timestamp))
     print('Subject',    topic.subject)
     print('Comment',    topic.text_comment)
     #print('Replies',    current_thread.replies)
