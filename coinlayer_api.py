@@ -19,6 +19,9 @@ def get_url(access_token, datetime, timeframe):
 	elif(timeframe == 1):
 		url = "http://api.coinlayer.com/api/" + datetime + "?" + access_token
 		return url
+def get_data(url):
+	request = requests.get(url)
+	return request.json()
 
 #url = 'http://api.coinlayer.com/api/timeframe?access_key=3a673fdf0140f6398fbe3546c7cf47f1&start_date=2018-04-01&end_date=2018-04-30&symbols=BTC'
 
@@ -32,13 +35,11 @@ http://api.coinlayer.com/timeframe
 access_token = get_access_token()
 datetime = get_datetime()
 url = get_url(access_token, datetime, 1)
+data = get_data(url)
 print(access_token)
 print(datetime)
 print(url)
-#r = requests.get(url)
-#data = r.json()
-
-#print(data)
+print(data)
 
 #timestamp = int(json.dumps(data['timestamp']))
 
