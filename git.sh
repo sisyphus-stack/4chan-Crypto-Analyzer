@@ -2,5 +2,5 @@
 clear
 git init
 git add .
-git commit -m "added get_datetime and get_access token functions"
+git commit -m "added get_url function"
 git push -u origin master
