@@ -2,5 +2,5 @@
 clear
 git init
 git add .
-git commit -m "trying to resolve error where API call doesn't work when I concatenate URL"
+git commit -m "fixed API call error (forgot to strip newline from access_key.txt file)"
 git push -u origin master
