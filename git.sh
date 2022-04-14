@@ -2,6 +2,6 @@
 clear
 git init
 git add .
-git commit -m "need to incorporate archives into BASC library"
+git commit -m "added get_datetime and get_access token functions"
 git push -u origin master
 
