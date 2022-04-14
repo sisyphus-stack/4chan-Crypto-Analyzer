@@ -12,6 +12,12 @@ def get_datetime():
 	datetime = input("Please enter dd/mm/yyyy:\n")
 	return datetime
 
+def get_url(access_token, datetime, timeframe):
+	if(timeframe == 0):
+		url = "http://api.coinlayer.com/api/live?".append(access_token)
+	else if(timeframe == 1):
+		url = "http://api.coinlayer.com/api/".append(datetime)
+
 url = 'http://api.coinlayer.com/api/timeframe?access_key=3a673fdf0140f6398fbe3546c7cf47f1&start_date=2018-04-01&end_date=2018-04-30&symbols=BTC'
 
 """
