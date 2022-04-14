@@ -20,8 +20,9 @@ def main():
     threads = json.loads(response.read())
     for i in range(0, len(threads)):    
         print(i)    
-        print(threads[i])
-        current_thread = board.get_thread(threads[i])       
+        print("Timestamp: ", threads[i])
+        current_thread = board.get_thread(threads[i])      
+        print(current_thread.topic.timestamp) 
         for j in range(0, len(current_thread.replies)):
             if(current_thread.replies[j].text_comment.find("bitcoin") != -1):
                 print(current_thread.replies[j].text_comment + '\n\n\n')                
