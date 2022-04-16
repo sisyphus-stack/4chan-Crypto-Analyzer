@@ -2,5 +2,5 @@
 clear
 git init
 git add .
-git commit -m "fixed API call error (forgot to strip newline from access_key.txt file)"
+git commit -m "Starting to look like a functional program"
 git push -u origin master
