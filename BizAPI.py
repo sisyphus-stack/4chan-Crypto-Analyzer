@@ -1,4 +1,3 @@
-# credits to Anarov for improved example.py
 from __future__ import print_function 
 import basc_py4chan
 import urllib, json, os, datetime
@@ -6,8 +5,12 @@ from unidecode import unidecode
 import time
 from urllib.request import Request, urlopen
 
+def biztest():
+	print("Test")
 
 def main():
+    
+    """
     board = basc_py4chan.Board('biz')
     #all_thread_ids = board.get_all_thread_ids()
     BIT_counter = 0
@@ -32,6 +35,8 @@ def main():
                 print(current_thread.replies[j].text_comment + '\n\n\n') 
 
     print(len(threads))
+    """
+    
     
    
 if __name__ == '__main__':

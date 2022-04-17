@@ -1,6 +1,7 @@
 import json
 import requests
 from datetime import datetime
+from BizAPI import biztest
 
 #Pulls access_key from access_key.txt file
 def get_access_key():
@@ -9,12 +10,16 @@ def get_access_key():
 	return access_key
 
 #Appends access key to url
-def get_url(access_key):
+def get_live_url(access_key):
 	url = 'http://api.coinlayer.com/live?access_key=' + access_key
+	return str(url)
+	
+def get_url_from_date(access_key, **date):
+	url = 'http://api.coinlayer.com/' + date['year'] + '-' + date['month'] + '-' + date['day'] + '?access_key=' + access_key 
 	return str(url)
 
 def get_coin():
-    case = input("Enter the coin you would like to analyze: ")  
+    case = input("Enter the coin you would like to analyze: ") 
     return case  
 
 #Requests data from api using supplied URL
@@ -22,26 +27,30 @@ def get_data(url):
 	request = requests.get(url)
 	return request.json()
 
-def get_dates():
-    dates = {"day" : "", "month" : "", "year" : ""}   
-    dates["day"] = input("Enter day: ")
-    dates["month"] = input("Enter month: ")
-    dates["year"] = input("Enter year: ")
-    return dates
+def get_date():
+    date = {"day" : "", "month" : "", "year" : ""}   
+    date["day"] = input("Enter day: ")
+    date["month"] = input("Enter month: ")
+    date["year"] = input("Enter year: ")
+    return date
     
 def live_analysis(coin):
 	print("LIVE ANALYSIS: ")
-	data = get_data(get_url(get_access_key()))
+	data = get_data(get_live_url(get_access_key()))
 	print(data['rates'][coin])
 	return 0;
 
-def analysis_from_date():
+def analysis_from_date(coin):
+	print("ANALYSIS FROM DATE: ")
+	data = get_data(get_url_from_date(get_access_key(), **get_date()))
+	print(data['rates'][coin])
 	return 0;
 	
 def analysis_time_range():
 	return 0;
 	
 def main():
+	print(biztest())
 	case = 0;
 	while(case != 'q'):
 		
@@ -54,8 +63,7 @@ def main():
 			print()	
 		
 		elif(int(case) == 2):
-			dates = get_dates()
-			print(dates)
+			analysis_from_date(get_coin())
 		
 		else: print("Invalid option!")
 main()
