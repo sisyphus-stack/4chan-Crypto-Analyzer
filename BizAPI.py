@@ -6,15 +6,13 @@ import time
 from urllib.request import Request, urlopen
 
 def biztest():
-	print("Test")
+	print("BizTest")
 
 def main():
     
-    """
     board = basc_py4chan.Board('biz')
-    #all_thread_ids = board.get_all_thread_ids()
-    BIT_counter = 0
-    
+    all_thread_ids = board.get_all_thread_ids()
+    '''BIT_counter = 0
     #find way to make case for archive. 
     #It seems that I'm able to get the threads from archive, but when I pull info from 
     #standard basc_py4chan.Board('biz') I only pull threads from catalog.
@@ -23,7 +21,7 @@ def main():
     threads = json.loads(response.read())
     for i in range(0, len(threads)):    
         print(i)    
-        print("Timestamp: ", threads[i])
+        print("Thread number ", threads[i])
         current_thread = board.get_thread(threads[i])      
         print(current_thread.topic.timestamp) 
         for j in range(0, len(current_thread.replies)):
@@ -33,9 +31,9 @@ def main():
             if(current_thread.replies[j].text_comment.find("BIT") != -1):
                 BIT_counter += 1
                 print(current_thread.replies[j].text_comment + '\n\n\n') 
-
-    print(len(threads))
-    """
+'''
+    #print(len(all_thread_ids))
+    
     
     
    
