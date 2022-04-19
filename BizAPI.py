@@ -5,37 +5,38 @@ from unidecode import unidecode
 import time
 from urllib.request import Request, urlopen
 
-def biztest():
-	print("BizTest")
-
 def main():
-    
+    # grab the first thread on the board by checking first page
     board = basc_py4chan.Board('biz')
-    all_thread_ids = board.get_all_thread_ids()
-    '''BIT_counter = 0
-    #find way to make case for archive. 
-    #It seems that I'm able to get the threads from archive, but when I pull info from 
-    #standard basc_py4chan.Board('biz') I only pull threads from catalog.
-    url = "https://a.4cdn.org/biz/archive.json"
-    response = urlopen(url)
-    threads = json.loads(response.read())
-    for i in range(0, len(threads)):    
-        print(i)    
-        print("Thread number ", threads[i])
-        current_thread = board.get_thread(threads[i])      
-        print(current_thread.topic.timestamp) 
-        for j in range(0, len(current_thread.replies)):
-            if(current_thread.replies[j].text_comment.find("bitcoin") != -1):
-                print(current_thread.replies[j].text_comment + '\n\n\n')                
-                BIT_counter += 1
-            if(current_thread.replies[j].text_comment.find("BIT") != -1):
-                BIT_counter += 1
-                print(current_thread.replies[j].text_comment + '\n\n\n') 
-'''
-    #print(len(all_thread_ids))
-    
-    
-    
-   
+    print(board._url.archived_thread_list())
+    all_thread_ids = board.get_archived_thread_ids()
+    print(type(all_thread_ids[0]))
+    first_thread_id = all_thread_ids[0]
+    thread = board.get_thread(first_thread_id)
+  
+    # thread information
+    print(thread)
+    print('Sticky?', thread.sticky)
+    print('Closed?', thread.closed)
+
+    # topic information
+    topic = thread.topic
+    print('Topic Repr', topic)
+    print('Postnumber', topic.post_number)
+    print('Timestamp',  topic.timestamp)
+    print('Datetime',   repr(topic.datetime))
+    print('Subject',    topic.subject)
+    print('Comment',    topic.text_comment)
+    print('Replies',    thread.replies)
+
+    # file information
+    for f in thread.file_objects():
+        print('Filename', f.filename)
+        print('  Filemd5hex', f.file_md5_hex)
+        print('  Fileurl', f.file_url)
+        print('  Thumbnailurl', f.thumbnail_url)
+        print()
+        
+
 if __name__ == '__main__':
     main()
