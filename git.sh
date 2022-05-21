@@ -1,7 +1,4 @@
 #!/bin/sh
-clear
-echo hi
-git init
-git add .
-git commit -m "Need to make BizAPI.py compatible with coinlayer_api.py to run asynchronously"
-git push -u origin master
+git -C /home/dick/Desktop/4chan-Crypto-Analyizer/ add .
+git -C /home/dick/Desktop/4chan-Crypto-Analyizer/ commit -m "another commit"
+git -C /home/dick/Desktop/4chan-Crypto-Analyizer/ push origin master
